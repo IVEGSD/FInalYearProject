@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BoardM : MonoBehaviour {
+	public static BoardM Instance{ set; get;}
+	private bool[,] allowedMoves{ set; get;}
+
 	public Chessman[,] Chessmans{ set; get;}
 	private Chessman selectedChessman;
     private const float TILE_SIZE = 1.0f;
@@ -19,7 +22,7 @@ public class BoardM : MonoBehaviour {
 
 	public bool isWhiteTurn = true;
 	private void Start(){
-
+		Instance = this;
 		SpawnAllChessmans ();
 	}
 
@@ -46,15 +49,20 @@ public class BoardM : MonoBehaviour {
 			return;
 		if (Chessmans [x, y].isWhite != isWhiteTurn)
 			return;
+
+		allowedMoves = Chessmans [x, y].PossibleMove ();
 		selectedChessman = Chessmans [x, y];
+		BoardHighlights.Instance.HighlightAllowedMoves (allowedMoves);
 	}
 	private void MoveChessman(int x, int y){
-		if (selectedChessman.PossibleMove (x, y)) {
+		if (allowedMoves[x,y]) {
 			Chessmans [selectedChessman.CurrentX, selectedChessman.CurrentY] = null;
 			selectedChessman.transform.position = GetTileCenter (x, y);
+			selectedChessman.SetPosition (x, y);
 			Chessmans [x, y] = selectedChessman;
-			//isWhiteTurn = !isWhiteTurn;
+			isWhiteTurn = !isWhiteTurn;
 		}
+		BoardHighlights.Instance.Hidehighlights ();
 		selectedChessman = null;
 	}
 
