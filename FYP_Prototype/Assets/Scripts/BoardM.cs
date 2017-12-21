@@ -60,7 +60,7 @@ public class BoardM : MonoBehaviour {
 			selectedChessman.transform.position = GetTileCenter (x, y);
 			selectedChessman.SetPosition (x, y);
 			Chessmans [x, y] = selectedChessman;
-			isWhiteTurn = !isWhiteTurn;
+			//isWhiteTurn = !isWhiteTurn;
 		}
 		BoardHighlights.Instance.Hidehighlights ();
 		selectedChessman = null;
