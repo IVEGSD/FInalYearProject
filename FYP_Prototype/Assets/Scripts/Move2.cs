@@ -8,11 +8,11 @@ public class Move2 : Chessman {
 		bool[,] r = new bool[8, 8];
 		Chessman c, c2;
 		int move = 1;
-		int bs = 7;
+		int bs = 7,mv = 0;
 		for(int i = move;i>=0;i--){
 			for (int j = move; j >= 0; j--) {
 
-				if(((i)*(i)+(j)*(j))<=(move*move)){
+				if(((i)*(i)+(j)*(j))<=(move*move)&&mv==0&&BoardM.m2==true){
 
 
 					if (CurrentX <= bs - move&&CurrentY>=move) {
@@ -56,10 +56,14 @@ public class Move2 : Chessman {
 							r [CurrentX - i, CurrentY - j] = true;
 						}
 					}
+
 				}
 
 			}
 		}
+		BoardM.m2 = false;
+		mv++;
 		return r;
+
 	}
 }

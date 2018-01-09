@@ -20,7 +20,8 @@ public class BoardM : MonoBehaviour {
 
 	private Quaternion orientation = Quaternion.Euler(0,180,0);
 
-	public bool isWhiteTurn = true;
+	public static bool isWhiteTurn = true;
+	public static bool m1 = true,m2 = true,m3 = true;
 	private void Start(){
 		Instance = this;
 		SpawnAllChessmans ();
@@ -124,7 +125,7 @@ public class BoardM : MonoBehaviour {
 		activeChessman = new List<GameObject> ();
 		Chessmans = new Chessman[8, 8];
 		SpawnChessman (0, 3,0);
-		SpawnChessman (1, 7,0);
+
 		SpawnChessman (1, 4,0);
 		SpawnChessman (2, 4,6);
 		//SpawnChessman (0, GetTileCenter(7.0));
