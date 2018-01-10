@@ -246,11 +246,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: "\u5973\u7375\u4EBA"
+    name:
+    - "\u5973\u7375\u4EBA"
     sentences:
-    - "\u55EF\uFF1F\u4F60\u662F\u8AB0\u554A\uFF1F"
-    - "\u54E6\uFF0C\u65C5\u884C\u8005\u55CE\uFF1F"
-    - "\u5C0D\u6211\u7684\u5BF6\u7269\u6709\u8208\u8DA3\uFF1F"
+    - "\u55EF\uFF1F\u4F60\u662F\u8AB0\u554A\uFF1F\n\u5F9E\u4F86\u6C92\u898B\u904E\u4F60\u5462......"
+    - "\u54E6\uFF0C\u65C5\u884C\u8005\u55CE\uFF1F\n\u9019\u6A23\u554A\uFF0C\u90A3\u4F60\u51FA\u73FE\u5728\u9019\u88E1\u4E5F\u4E0D\u7B97\u5947\u602A\u3002"
+    - "\u55EF\uFF1F\u4F60\u554F\u6211\u8EAB\u4E0A\u6709\u4EC0\u9EBC\u503C\u9322\u7684\u6771\u897F\uFF1F\n\u5C0D\u6211\u7684\u5BF6\u7269\u6709\u8208\u8DA3\uFF1F"
 --- !u!114 &122896945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +482,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1444769900}
     m_Modifications:
+    - target: {fileID: 114465338890681766, guid: bf4152cc4ec26c140aacd892b7e825cf,
+        type: 2}
+      propertyPath: dialogue.name.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114465338890681766, guid: bf4152cc4ec26c140aacd892b7e825cf,
         type: 2}
       propertyPath: dialogue.sentences.Array.size
@@ -787,12 +793,12 @@ Prefab:
     - target: {fileID: 114465338890681766, guid: bf4152cc4ec26c140aacd892b7e825cf,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: "\u54E6\uFF0C\u65C5\u884C\u8005\u55CE\uFF1F"
+      value: "\u54E6\uFF0C\u65C5\u884C\u8005\u55CE\uFF1F\n\u9019\u6A23\u554A\uFF0C\u90A3\u4F60\u51FA\u73FE\u5728\u9019\u88E1\u4E5F\u4E0D\u7B97\u5947\u602A\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 114465338890681766, guid: bf4152cc4ec26c140aacd892b7e825cf,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: "\u5C0D\u6211\u7684\u5BF6\u7269\u6709\u8208\u8DA3\uFF1F"
+      value: "\u55EF\uFF1F\u4F60\u554F\u6211\u8EAB\u4E0A\u6709\u4EC0\u9EBC\u503C\u9322\u7684\u6771\u897F\uFF1F\n\u5C0D\u6211\u7684\u5BF6\u7269\u6709\u8208\u8DA3\uFF1F"
       objectReference: {fileID: 0}
     - target: {fileID: 224198415222571164, guid: bf4152cc4ec26c140aacd892b7e825cf,
         type: 2}
@@ -803,6 +809,16 @@ Prefab:
         type: 2}
       propertyPath: dialogue.sentences.Array.data[3]
       value: "\u5C0D\u6211\u7684\u5BF6\u7269\u6709\u8208\u8DA3\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114465338890681766, guid: bf4152cc4ec26c140aacd892b7e825cf,
+        type: 2}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "\u55EF\uFF1F\u4F60\u662F\u8AB0\u554A\uFF1F\n\u5F9E\u4F86\u6C92\u898B\u904E\u4F60\u5462......"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114465338890681766, guid: bf4152cc4ec26c140aacd892b7e825cf,
+        type: 2}
+      propertyPath: dialogue.name.Array.data[0]
+      value: "\u5973\u7375\u4EBA"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf4152cc4ec26c140aacd892b7e825cf, type: 2}

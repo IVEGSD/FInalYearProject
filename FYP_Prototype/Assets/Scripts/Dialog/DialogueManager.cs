@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour {
         TalkButton.SetActive(false);
 
 
-        nameText.text = dialogue.name;
+        nameText.text = dialogue.name[0];
 
 		sentences.Clear();
 
@@ -40,7 +40,8 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence ()
 	{
-		if (sentences.Count == 0)
+        Debug.Log(sentences.Count);
+        if (sentences.Count == 0)
 		{
 			EndDialogue();
 			return;
@@ -58,7 +59,7 @@ public class DialogueManager : MonoBehaviour {
 		{
             
 			dialogueText.text += letter;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.02f);
             yield return null;
 		}
 	}
