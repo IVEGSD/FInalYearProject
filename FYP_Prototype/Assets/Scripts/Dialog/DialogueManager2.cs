@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogManager2 : MonoBehaviour {
+public class DialogueManager2 : MonoBehaviour {
     
     [Header("Dialogue Components[Name][Dialog]")]
     public Text nameText;       //canvas.text for character name

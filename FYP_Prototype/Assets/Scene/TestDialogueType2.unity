@@ -176,7 +176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &135530925
 GameObject:
@@ -216,8 +216,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 522.5812, y: 215.82503, z: 5.375}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1367487364}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -825,7 +824,7 @@ Transform:
   - {fileID: 321967588}
   - {fileID: 525732950}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &729592195
 GameObject:
@@ -955,7 +954,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1073508635
 GameObject:
@@ -1062,7 +1061,7 @@ GameObject:
   - component: {fileID: 1367487364}
   - component: {fileID: 1367487365}
   m_Layer: 0
-  m_Name: DialogueManager
+  m_Name: DialogueManager2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1075,12 +1074,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1367487363}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40.65808, y: -32.63896, z: -1.0272355}
+  m_LocalPosition: {x: 481.9231, y: 183.18607, z: 4.3477645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2010542628}
-  m_Father: {fileID: 135530927}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1367487365
 MonoBehaviour:
@@ -1447,7 +1446,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2010542627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ddd33eae28b5148a72170d47ccd942, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bfd5447593d0fb45b1fedf0e6bb32f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
@@ -1455,7 +1454,7 @@ MonoBehaviour:
     - Fason
     - Lisa
     sentences:
-    - "#\u4F60\u597D\uFF0C\u6211\u662F\u521D\u4F86\u4E4D\u5230\u7684\u5192\u96AA\u8005\uFF0C\u6211\u53EBFason\u3002"
+    - "#\u4F60\u597D\uFF0C\u6211\u662F\u521D\u4F86\u4E4D\u5230\u7684\u5192\u96AA\u8005\uFF0C\u6211\u53EBFason\u3002\r\n"
     - "*\u54E6\uFF01Fason\uFF0C\u4F60\u597D\uFF0C\u6211\u53EBLisa\uFF0C\u6211\u4E5F\u662F\u5192\u96AA\u8005\u3002"
-    - "#\u770B\u8D77\u4F86\u4F60\u5F88\u7DCA\u5F35\u7684\u6A23\u5B50\uFF0C\u662F\u5426\u6709\u6211\u80FD\u5E6B\u5FD9\u7684\u5730\u65B9\uFF1F"
-    - "*\u524D\u9762\u7684\u6751\u838A\u597D\u50CF\u767C\u751F\u4E86\u4E0D\u5F97\u4E86\u7684\u4E8B\u60C5\uFF0C\n\u4F60\u8DDF\u6211\u4E00\u8D77\u904E\u53BB\u8ABF\u67E5\u4E00\u4E0B\u5427\uFF1F"
+    - "#\u770B\u8D77\u4F86\u4F60\u5F88\u7DCA\u5F35\u7684\u6A23\u5B50\uFF0C\u662F\u767C\u751F\u4E86\u4EC0\u9EBC\u4E8B\u55CE\uFF1F"
+    - "*\u524D\u9762\u7684\u6751\u838A\u597D\u50CF\u767C\u751F\u4E86\u4E0D\u5F97\u4E86\u7684\u4E8B\u60C5\uFF0C\r\n\u4F60\u8981\u8DDF\u6211\u4E00\u8D77\u904E\u53BB\u8ABF\u67E5\u4E00\u4E0B\u55CE\uFF1F"
