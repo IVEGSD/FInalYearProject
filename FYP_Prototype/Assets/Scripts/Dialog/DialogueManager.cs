@@ -9,10 +9,12 @@ public class DialogueManager : MonoBehaviour {
 	public Text dialogueText;
 
 	public Animator animator;
+    public Animator fadeEffect;
+
+    public GameObject TalkButton;
 
 	private Queue<string> sentences;
-
-	// Use this for initialization
+    
 	void Start () {
 		sentences = new Queue<string>();
 	}
@@ -20,8 +22,11 @@ public class DialogueManager : MonoBehaviour {
 	public void StartDialogue (Dialogue dialogue)
 	{
 		animator.SetBool("IsOpen", true);
+        fadeEffect.SetBool("isTalk", true);
+        TalkButton.SetActive(false);
 
-		nameText.text = dialogue.name;
+
+        nameText.text = dialogue.name;
 
 		sentences.Clear();
 
@@ -51,14 +56,18 @@ public class DialogueManager : MonoBehaviour {
 		dialogueText.text = "";
 		foreach (char letter in sentence.ToCharArray())
 		{
+            
 			dialogueText.text += letter;
-			yield return null;
+            yield return new WaitForSeconds(0.05f);
+            yield return null;
 		}
 	}
 
 	void EndDialogue()
 	{
 		animator.SetBool("IsOpen", false);
-	}
+        fadeEffect.SetBool("isTalk", false);
+        TalkButton.SetActive(true);
+    }
 
 }
