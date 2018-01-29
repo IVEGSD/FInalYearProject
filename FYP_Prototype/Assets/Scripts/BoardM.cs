@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BoardM : MonoBehaviour {
 	public static BoardM Instance{ set; get;}
 	private bool[,] allowedMoves{ set; get;}
 
 	public Chessman[,] Chessmans{ set; get;}
-	private Chessman selectedChessman;
+	public static Chessman selectedChessman;
     private const float TILE_SIZE = 1.0f;
     private const float TILE_OFFSET = 0.5f;
-
+	public Button yourButton;
     private int selectionX = -1;
     private int selectionY = -1;
 
@@ -25,6 +25,8 @@ public class BoardM : MonoBehaviour {
 	private void Start(){
 		Instance = this;
 		SpawnAllChessmans ();
+		//Button abtn = yourButton.GetComponent<Button>();
+
 	}
 
     // Update is called once per frame
@@ -100,9 +102,13 @@ public class BoardM : MonoBehaviour {
             return;
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("Plane")))
-        {
+		{
+			//Vector3 pos = yourButton.transform.position;
             selectionX = (int)hit.point.x;
             selectionY = (int)hit.point.z;
+			//pos.x = selectionX;
+			//pos.y = selectionY;
+			//yourButton.transform.position = pos;
            
         }
         else
