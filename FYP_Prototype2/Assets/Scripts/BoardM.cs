@@ -15,8 +15,10 @@ public class BoardM : MonoBehaviour {
     private int selectionY = -1;
 
     public List<GameObject> chessmanPrefabs;
-	private List<GameObject> activeChessman = new List<GameObject>(); 
+	private List<GameObject> activeChessman = new List<GameObject>();
     // Use this for initialization
+    private Material previousMat;
+    public Material selectedMat;
 
 	private Quaternion orientation = Quaternion.Euler(0,180,0);
 
@@ -55,7 +57,10 @@ public class BoardM : MonoBehaviour {
 
 		allowedMoves = Chessmans [x, y].PossibleMove ();
 		selectedChessman = Chessmans [x, y];
-		BoardHighlights.Instance.HighlightAllowedMoves (allowedMoves);
+        //previousMat = selectedChessman.GetComponent<MeshRenderer>().material;
+        //selectedMat.mainTexture = previousMat.mainTexture;
+        //selectedChessman.GetComponent<MeshRenderer>().material = selectedMat;
+        BoardHighlights.Instance.HighlightAllowedMoves (allowedMoves);
 	}
 	private void MoveChessman(int x, int y){
 		if (allowedMoves[x,y]) {
