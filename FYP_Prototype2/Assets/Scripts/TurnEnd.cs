@@ -7,7 +7,7 @@ using System.Collections;
 public class TurnEnd : MonoBehaviour {
 	public Button yourButton;
 	public Text btext = null;
-	int i = 1;
+	public static int round = 1;
 	string s;
 	void Start()
 	{
@@ -20,12 +20,13 @@ public class TurnEnd : MonoBehaviour {
 
 	void TaskOnClick()
 	{
-		i++;
-		BoardM.m1 = true;
-		BoardM.m2 = true;
-		BoardM.m3 = true;
+		round++;
 
-		btext.text = "Round: "+i;
+		//Move2.isWhite = true;
+		//CubeMove.isWhite = true;
+		//Move3.isWhite = true;
+
+		btext.text = "Round: "+round;
 	}
 
 }

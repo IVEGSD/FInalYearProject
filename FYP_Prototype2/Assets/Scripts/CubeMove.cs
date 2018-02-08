@@ -12,7 +12,7 @@ public class CubeMove : Chessman {
 		for(int i = move;i>=0;i--){
 			for (int j = move; j >= 0; j--) {
 				
-				if(((i)*(i)+(j)*(j))<=(move*move)&&mv==0&&BoardM.m1==true){
+				if(((i)*(i)+(j)*(j))<=(move*move)&&mv==0&&isWhite==true){
 					
 
 					if (CurrentX <= bs - move&&CurrentY>=move) {

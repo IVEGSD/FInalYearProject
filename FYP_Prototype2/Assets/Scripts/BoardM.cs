@@ -13,10 +13,12 @@ public class BoardM : MonoBehaviour {
 	public Button yourButton;
     private int selectionX = -1;
     private int selectionY = -1;
-
+	private int checkRound = 0;
     public List<GameObject> chessmanPrefabs;
-	private List<GameObject> activeChessman = new List<GameObject>(); 
+	private List<GameObject> activeChessman = new List<GameObject>();
     // Use this for initialization
+    private Material previousMat;
+    public Material selectedMat;
 
 	private Quaternion orientation = Quaternion.Euler(0,180,0);
 
@@ -45,7 +47,18 @@ public class BoardM : MonoBehaviour {
 				}
 			}
 		}
-        
+		if (TurnEnd.round > checkRound) {
+			for (int x = 0; x < 8; x++) {
+				for (int y = 0; y < 8; y++) {
+					if (Chessmans [x, y] != null) {
+						Chessmans [x, y].isWhite = true;
+					}
+				}
+			}
+		}
+		checkRound = TurnEnd.round;
+
+
     }
 	private void SelectChessman(int x, int y){
 		if (Chessmans [x, y] == null)
@@ -55,15 +68,24 @@ public class BoardM : MonoBehaviour {
 
 		allowedMoves = Chessmans [x, y].PossibleMove ();
 		selectedChessman = Chessmans [x, y];
-		BoardHighlights.Instance.HighlightAllowedMoves (allowedMoves);
+        //previousMat = selectedChessman.GetComponent<MeshRenderer>().material;
+        //selectedMat.mainTexture = previousMat.mainTexture;
+        //selectedChessman.GetComponent<MeshRenderer>().material = selectedMat;
+        BoardHighlights.Instance.HighlightAllowedMoves (allowedMoves);
 	}
 	private void MoveChessman(int x, int y){
 		if (allowedMoves[x,y]) {
-			Chessmans [selectedChessman.CurrentX, selectedChessman.CurrentY] = null;
-			selectedChessman.transform.position = GetTileCenter (x, y);
-			selectedChessman.SetPosition (x, y);
-			Chessmans [x, y] = selectedChessman;
-			//isWhiteTurn = !isWhiteTurn;
+			Chessman c = Chessmans [x, y];
+			if (c != null) {
+				selectedChessman = null;
+				//Chessmans [x, y] = Chessmans [selectedChessman.CurrentX, selectedChessman.CurrentY];
+			} else {
+				Chessmans [selectedChessman.CurrentX, selectedChessman.CurrentY] = null;
+				selectedChessman.transform.position = GetTileCenter (x, y);
+				selectedChessman.SetPosition (x, y);
+				Chessmans [x, y] = selectedChessman;
+				selectedChessman.isWhite = false;
+			}//isWhiteTurn = !isWhiteTurn;
 		}
 		BoardHighlights.Instance.Hidehighlights ();
 		selectedChessman = null;
