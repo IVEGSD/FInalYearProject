@@ -12,7 +12,7 @@ public class Move3 : Chessman {
 		for(int i = move;i>=0;i--){
 			for (int j = move; j >= 0; j--) {
 
-				if(((i)*(i)+(j)*(j))<=(move*move)&&((i)*(i)+(j)*(j))!=8&&mv==0&&isWhite && BoardM.whetherMove)
+				if(((i)*(i)+(j)*(j))<=(move*move)&&((i)*(i)+(j)*(j))!=8&&mv==0&&isWhite )
                 {
 
 

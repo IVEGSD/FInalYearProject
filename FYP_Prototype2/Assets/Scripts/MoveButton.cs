@@ -11,8 +11,8 @@ public class MoveButton : MonoBehaviour {
     void Start()
     {
 
-        Button btn = yourButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        //Button btn = yourButton.GetComponent<Button>();
+        //btn.onClick.AddListener(TaskOnClick);
 
 
     }
@@ -20,7 +20,7 @@ public class MoveButton : MonoBehaviour {
     void TaskOnClick()
     {
 
-            BoardM.whetherMove = true;
+            //BoardM.whetherMove = true;
 
        
     }

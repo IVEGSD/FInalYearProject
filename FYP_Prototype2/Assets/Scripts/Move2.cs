@@ -13,7 +13,7 @@ public class Move2 : Chessman {
 		for(int i = move;i>=0;i--){
 			for (int j = move; j >= 0; j--) {
 
-				if(((i)*(i)+(j)*(j))<=(move*move)&&mv==0&&isWhite && BoardM.whetherMove)
+				if(((i)*(i)+(j)*(j))<=(move*move)&&mv==0&&isWhite )
                 {
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class BoardM : MonoBehaviour {
 	public static BoardM Instance{ set; get;}
 	private bool[,] allowedMoves{ set; get;}
@@ -10,7 +11,7 @@ public class BoardM : MonoBehaviour {
 	public static Chessman selectedChessman;
     private const float TILE_SIZE = 1.0f;
     private const float TILE_OFFSET = 0.5f;
-	public Button yourButton;
+    Button btn;
     private int selectionX = -1;
     private int selectionY = -1;
 	private int checkRound = 0;
@@ -18,18 +19,19 @@ public class BoardM : MonoBehaviour {
 	private List<GameObject> activeChessman = new List<GameObject>();
     // Use this for initialization
     private Material previousMat;
-    public Material selectedMat;
+
     public static bool whetherMove = false;
 	private Quaternion orientation = Quaternion.Euler(0,180,0);
-
-	public static bool isWhiteTurn = true;
+    public Button moveButton;
+    public static bool isWhiteTurn = true;
 	public static bool m1 = true,m2 = true,m3 = true;
 	private void Start(){
 		Instance = this;
 		SpawnAllChessmans ();
-		//Button abtn = yourButton.GetComponent<Button>();
-
-	}
+        //Button abtn = yourButton.GetComponent<Button>();
+        btn = moveButton.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
+    }
 
     // Update is called once per frame
     private void Update()
@@ -40,8 +42,10 @@ public class BoardM : MonoBehaviour {
 		if (Input.GetMouseButtonDown (1)) {
 			if (selectionX >= 0 && selectionY >= 0) {
 				if(selectedChessman ==null){
+
 					SelectChessman(selectionX,selectionY);
-				}
+                    //whetherMove = false;
+                }
 				else{
 
                     MoveChessman(selectionX,selectionY);
@@ -50,11 +54,8 @@ public class BoardM : MonoBehaviour {
                 }
 			}
 		}
-        while (whetherMove)
-        {
-            allowedMoves = Chessmans[selectionX, selectionY].PossibleMove();
-            BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
-        }
+        
+       
         if (TurnEnd.round > checkRound) {
 			for (int x = 0; x < 8; x++) {
 				for (int y = 0; y < 8; y++) {
@@ -76,23 +77,22 @@ public class BoardM : MonoBehaviour {
 
 
         //if (whetherMove == true)
-        //{
-            //allowedMoves = Chessmans[x, y].PossibleMove();
-            selectedChessman = Chessmans[x, y];
-            //previousMat = selectedChessman.GetComponent<MeshRenderer>().material;
-            //selectedMat.mainTexture = previousMat.mainTexture;
-            //selectedChessman.GetComponent<MeshRenderer>().material = selectedMat;
-           // BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
-       // }
-        //whetherMove = false;
 
+      
+        allowedMoves = Chessmans[x, y].PossibleMove();
+        selectedChessman = Chessmans[x, y];
+        //previousMat = selectedChessman.GetComponent<MeshRenderer>().material;
+        //selectedMat.mainTexture = previousMat.mainTexture;
+        //selectedChessman.GetComponent<MeshRenderer>().material = selectedMat;
+        // BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
+        
     }
 	private void MoveChessman(int x, int y){
-		if (allowedMoves[x,y]) {
+		if (allowedMoves[x,y]&& whetherMove) {
 			Chessman c = Chessmans [x, y];
 			if (c != null) {
 				selectedChessman = null;
-                whetherMove = false;
+                //whetherMove = false;
                 //Chessmans [x, y] = Chessmans [selectedChessman.CurrentX, selectedChessman.CurrentY];
             } else {
 				Chessmans [selectedChessman.CurrentX, selectedChessman.CurrentY] = null;
@@ -180,4 +180,10 @@ public class BoardM : MonoBehaviour {
 		origin.z += (TILE_SIZE * y) + TILE_OFFSET;
 		return origin;
 	}
+    private void TaskOnClick()
+    {
+
+        BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
+        whetherMove = true;
+    }
 }
