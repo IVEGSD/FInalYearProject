@@ -19,7 +19,7 @@ public class BoardM : MonoBehaviour {
     // Use this for initialization
     private Material previousMat;
     public Material selectedMat;
-
+    public static bool whetherMove = false;
 	private Quaternion orientation = Quaternion.Euler(0,180,0);
 
 	public static bool isWhiteTurn = true;
@@ -37,17 +37,25 @@ public class BoardM : MonoBehaviour {
         UpdateSelection();
         DrawChessboard();
 
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (1)) {
 			if (selectionX >= 0 && selectionY >= 0) {
 				if(selectedChessman ==null){
 					SelectChessman(selectionX,selectionY);
 				}
 				else{
-					MoveChessman(selectionX,selectionY);
-				}
+
+                    MoveChessman(selectionX,selectionY);
+                    whetherMove = false;
+
+                }
 			}
 		}
-		if (TurnEnd.round > checkRound) {
+        while (whetherMove)
+        {
+            allowedMoves = Chessmans[selectionX, selectionY].PossibleMove();
+            BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
+        }
+        if (TurnEnd.round > checkRound) {
 			for (int x = 0; x < 8; x++) {
 				for (int y = 0; y < 8; y++) {
 					if (Chessmans [x, y] != null) {
@@ -63,23 +71,30 @@ public class BoardM : MonoBehaviour {
 	private void SelectChessman(int x, int y){
 		if (Chessmans [x, y] == null)
 			return;
-		if (Chessmans [x, y].isWhite != isWhiteTurn)
-			return;
+        //if (Chessmans [x, y].isWhite != isWhiteTurn)
+        //return;
 
-		allowedMoves = Chessmans [x, y].PossibleMove ();
-		selectedChessman = Chessmans [x, y];
-        //previousMat = selectedChessman.GetComponent<MeshRenderer>().material;
-        //selectedMat.mainTexture = previousMat.mainTexture;
-        //selectedChessman.GetComponent<MeshRenderer>().material = selectedMat;
-        BoardHighlights.Instance.HighlightAllowedMoves (allowedMoves);
-	}
+
+        //if (whetherMove == true)
+        //{
+            //allowedMoves = Chessmans[x, y].PossibleMove();
+            selectedChessman = Chessmans[x, y];
+            //previousMat = selectedChessman.GetComponent<MeshRenderer>().material;
+            //selectedMat.mainTexture = previousMat.mainTexture;
+            //selectedChessman.GetComponent<MeshRenderer>().material = selectedMat;
+           // BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
+       // }
+        //whetherMove = false;
+
+    }
 	private void MoveChessman(int x, int y){
 		if (allowedMoves[x,y]) {
 			Chessman c = Chessmans [x, y];
 			if (c != null) {
 				selectedChessman = null;
-				//Chessmans [x, y] = Chessmans [selectedChessman.CurrentX, selectedChessman.CurrentY];
-			} else {
+                whetherMove = false;
+                //Chessmans [x, y] = Chessmans [selectedChessman.CurrentX, selectedChessman.CurrentY];
+            } else {
 				Chessmans [selectedChessman.CurrentX, selectedChessman.CurrentY] = null;
 				selectedChessman.transform.position = GetTileCenter (x, y);
 				selectedChessman.SetPosition (x, y);

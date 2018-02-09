@@ -12,7 +12,8 @@ public class Move3 : Chessman {
 		for(int i = move;i>=0;i--){
 			for (int j = move; j >= 0; j--) {
 
-				if(((i)*(i)+(j)*(j))<=(move*move)&&((i)*(i)+(j)*(j))!=8&&mv==0&&isWhite==true){
+				if(((i)*(i)+(j)*(j))<=(move*move)&&((i)*(i)+(j)*(j))!=8&&mv==0&&isWhite && BoardM.whetherMove)
+                {
 
 
 					if (CurrentX <= bs - move&&CurrentY>=move) {
@@ -57,9 +58,13 @@ public class Move3 : Chessman {
 						}
 					}
 				}
+                // else {
+                //   c = BoardM.Instance.Chessmans[CurrentX,CurrentY];
+                //   r[CurrentX , CurrentY] = true;
+                //}
 
-			}
-		}
+            }
+        }
 		BoardM.m3 = false;
 		mv++;
 		return r;
