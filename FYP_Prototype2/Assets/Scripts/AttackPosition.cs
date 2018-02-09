@@ -33,7 +33,7 @@ public class AttackPosition : MonoBehaviour {
 
             pos.x = BoardM.selectedChessman.transform.position.x + 1.2f;
             pos.z = BoardM.selectedChessman.transform.position.z + 0.8f;
-            pos.y = BoardM.selectedChessman.transform.position.y + 0.5f;
+            pos.y = BoardM.selectedChessman.transform.position.y + 1f;
             //pos.z = BoardM.selectedChessman.transform.position.z;
             //pos.y = BoardM.selectionY;
             yourButton.transform.position = pos;
@@ -41,7 +41,7 @@ public class AttackPosition : MonoBehaviour {
 
             pos2.x = BoardM.selectedChessman.transform.position.x + 1.2f;
             pos2.z = BoardM.selectedChessman.transform.position.z + -0.4f;
-            pos2.y = BoardM.selectedChessman.transform.position.y + 0.5f;
+            pos2.y = BoardM.selectedChessman.transform.position.y + 1f;
             //pos.z = BoardM.selectedChessman.transform.position.z;
             //pos.y = BoardM.selectionY;
             itemButton.transform.position = pos2;
@@ -49,7 +49,7 @@ public class AttackPosition : MonoBehaviour {
 
             pos3.x = BoardM.selectedChessman.transform.position.x + 1.2f;
             pos3.z = BoardM.selectedChessman.transform.position.z + 0.2f;
-            pos3.y = BoardM.selectedChessman.transform.position.y + 0.5f;
+            pos3.y = BoardM.selectedChessman.transform.position.y + 1f;
             //pos.z = BoardM.selectedChessman.transform.position.z;
             //pos.y = BoardM.selectionY;
             skillButton.transform.position = pos3;
@@ -57,13 +57,13 @@ public class AttackPosition : MonoBehaviour {
 
             pos4.x = BoardM.selectedChessman.transform.position.x + 1.2f;
             pos4.z = BoardM.selectedChessman.transform.position.z - 1.0f;
-            pos4.y = BoardM.selectedChessman.transform.position.y + 0.5f;
+            pos4.y = BoardM.selectedChessman.transform.position.y + 1f;
             //pos.z = BoardM.selectedChessman.transform.position.z;
             //pos.y = BoardM.selectionY;
             turnEndButton.transform.position = pos4;
             pos5.x = BoardM.selectedChessman.transform.position.x + 1.2f;
             pos5.z = BoardM.selectedChessman.transform.position.z - 1.6f;
-            pos5.y = BoardM.selectedChessman.transform.position.y + 0.5f;
+            pos5.y = BoardM.selectedChessman.transform.position.y + 1f;
             //pos.z = BoardM.selectedChessman.transform.position.z;
             //pos.y = BoardM.selectionY;
             moveButton.transform.position = pos5;
