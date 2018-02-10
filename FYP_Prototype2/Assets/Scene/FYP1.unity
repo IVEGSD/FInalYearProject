@@ -980,7 +980,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   moveButton: {fileID: 891502825}
-  selectNew: 1
 --- !u!4 &1153818577
 Transform:
   m_ObjectHideFlags: 0

@@ -8,15 +8,25 @@ public class AttackPosition : MonoBehaviour {
 	public Button itemButton;
 	public Button skillButton;
     public Button turnEndButton, moveButton;
+
     //public GameObject thisO;
     // Use this for initialization
     void Start () {
-		Button abtn = yourButton.GetComponent<Button>();
-		Button ibtn = itemButton.GetComponent<Button>();
-		Button sbtn = skillButton.GetComponent<Button>();
-        Button tbtn = turnEndButton.GetComponent<Button>();
-        Button mbtn = moveButton.GetComponent<Button>();
+        //Button abtn = yourButton.GetComponent<Button>();
+        //Button ibtn = itemButton.GetComponent<Button>();
+        //Button sbtn = skillButton.GetComponent<Button>();
+        // Button tbtn = turnEndButton.GetComponent<Button>();
+        // Button mbtn = moveButton.GetComponent<Button>();
         //GameObject buttonA = GameObject.Find("Attack");
+        Vector3 inPos;
+        inPos.x = 100;
+        inPos.y = 100;
+        inPos.z = 100;
+        turnEndButton.transform.position = inPos;
+        skillButton.transform.position = inPos;
+        itemButton.transform.position = inPos;
+        yourButton.transform.position = inPos;
+        moveButton.transform.position = inPos;
     }
 	
 	// Update is called once per frame
@@ -26,8 +36,8 @@ public class AttackPosition : MonoBehaviour {
         Vector3 pos3 = skillButton.transform.position;
         Vector3 pos4 = turnEndButton.transform.position;
         Vector3 pos5 = turnEndButton.transform.position;
-        Vector3 inPos;
-        if (BoardM.selectedChessman != null)
+      
+        if (BoardM.selectedChessman != null&&!BoardM.whetherMove&&!TurnEnd.click)
         {
             //Vector3 posT = this.transform.position;
 
@@ -70,15 +80,19 @@ public class AttackPosition : MonoBehaviour {
         }
         else
         {
-            inPos.x = 100;
-            inPos.y = 100;
-            inPos.z = 100;
-            turnEndButton.transform.position = inPos;
-            skillButton.transform.position = inPos;
-            itemButton.transform.position = inPos;
-            yourButton.transform.position = inPos;
-            moveButton.transform.position = inPos;
+            initPosition();
 
         }
+    }
+    void initPosition() {
+        Vector3 inPos;
+        inPos.x = 100;
+        inPos.y = 100;
+        inPos.z = 100;
+        turnEndButton.transform.position = inPos;
+        skillButton.transform.position = inPos;
+        itemButton.transform.position = inPos;
+        yourButton.transform.position = inPos;
+        moveButton.transform.position = inPos;
     }
 }

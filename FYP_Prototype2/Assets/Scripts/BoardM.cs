@@ -24,7 +24,7 @@ public class BoardM : MonoBehaviour {
 	private Quaternion orientation = Quaternion.Euler(0,180,0);
     public Button moveButton;
     public static bool isWhiteTurn = true;
-	public static bool m1 = true,m2 = true,m3 = true;
+    bool clickMap = true;
 	private void Start(){
 		Instance = this;
 		SpawnAllChessmans ();
@@ -36,14 +36,17 @@ public class BoardM : MonoBehaviour {
     // Update is called once per frame
     private void Update()
     {
+        
         UpdateSelection();
         DrawChessboard();
+        Vector3 pos = moveButton.transform.position;
 
-		if (Input.GetMouseButtonDown (1)) {
+        if (Input.GetMouseButtonDown (0)&& pos.x == 100) {
 			if (selectionX >= 0 && selectionY >= 0) {
 				if(selectedChessman ==null){
-
-					SelectChessman(selectionX,selectionY);
+                    TurnEnd.click = false;
+                    
+                    SelectChessman(selectionX,selectionY);
                     //whetherMove = false;
                 }
 				else{
@@ -54,14 +57,16 @@ public class BoardM : MonoBehaviour {
                 }
 			}
 		}
-        
-       
-        if (TurnEnd.round > checkRound) {
+
+
+            if (TurnEnd.round > checkRound) {
 			for (int x = 0; x < 8; x++) {
 				for (int y = 0; y < 8; y++) {
 					if (Chessmans [x, y] != null) {
 						Chessmans [x, y].isWhite = true;
-					}
+                        //;
+                        //whetherMove = true;
+                    }
 				}
 			}
 		}
@@ -185,5 +190,6 @@ public class BoardM : MonoBehaviour {
 
         BoardHighlights.Instance.HighlightAllowedMoves(allowedMoves);
         whetherMove = true;
+    
     }
 }

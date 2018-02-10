@@ -65,7 +65,7 @@ public class Move3 : Chessman {
 
             }
         }
-		BoardM.m3 = false;
+
 		mv++;
 		return r;
 	

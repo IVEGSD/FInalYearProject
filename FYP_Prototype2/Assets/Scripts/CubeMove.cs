@@ -78,7 +78,7 @@ public class CubeMove : Chessman {
 
 			}
 		}
-		BoardM.m1 = false;
+
 		mv++;
 		return r;
 	

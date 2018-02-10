@@ -67,9 +67,7 @@ public class Move2 : Chessman {
 
             }
         }
-        if(r[CurrentX , CurrentY]!= true){
-			BoardM.m2 = false;
-		}
+
 		mv++;
 		return r;
 

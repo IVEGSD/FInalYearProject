@@ -9,10 +9,12 @@ public class TurnEnd : MonoBehaviour {
 	public Text btext = null;
 	public static int round = 1;
 	string s;
+    public static bool click = false;
 	void Start()
 	{
-		
-		Button btn = yourButton.GetComponent<Button>();
+        click = false;
+
+        Button btn = yourButton.GetComponent<Button>();
 		btn.onClick.AddListener(TaskOnClick);
 
 	
@@ -21,12 +23,12 @@ public class TurnEnd : MonoBehaviour {
 	void TaskOnClick()
 	{
 		round++;
-
-		//Move2.isWhite = true;
-		//CubeMove.isWhite = true;
-		//Move3.isWhite = true;
-
-		btext.text = "Round: "+round;
+        click = true;
+        //Move2.isWhite = true;
+        //CubeMove.isWhite = true;
+        //Move3.isWhite = true;
+        BoardM.selectedChessman = null;
+        btext.text = "Round: "+round;
 	}
 
 }
