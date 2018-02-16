@@ -28,6 +28,7 @@ public class TurnEnd : MonoBehaviour {
         //CubeMove.isWhite = true;
         //Move3.isWhite = true;
         BoardM.selectedChessman = null;
+
         btext.text = "Round: "+round;
 	}
 
