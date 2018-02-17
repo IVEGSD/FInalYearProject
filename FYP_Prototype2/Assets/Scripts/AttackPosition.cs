@@ -37,7 +37,7 @@ public class AttackPosition : MonoBehaviour {
         Vector3 pos4 = turnEndButton.transform.position;
         Vector3 pos5 = turnEndButton.transform.position;
       
-        if (BoardM.selectedChessman != null&&!BoardM.whetherMove&&!TurnEnd.click)
+        if (BoardM.selectedChessman != null&&!BoardM.whetherMove&&!TurnEnd.click&&!BoardM.isNPC)
         {
             //Vector3 posT = this.transform.position;
 

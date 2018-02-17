@@ -7,7 +7,8 @@ public class CubeMove : Chessman {
 	public override bool[,] PossibleMove(){
 		bool[,] r = new bool[8, 8];
 		Chessman c, c2;
-		int move = 2;
+        type = "PC";
+        int move = 2;
 		int bs = 7,mv = 0;
 		for(int i = move;i>=0;i--){
 			for (int j = move; j >= 0; j--) {

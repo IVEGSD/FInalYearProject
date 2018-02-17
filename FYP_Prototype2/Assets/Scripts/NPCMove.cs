@@ -8,7 +8,7 @@ public class NPCMove : Chessman
     public override bool[,] PossibleMove()
     {
         bool[,] r = new bool[8, 8];
-
+        type = "NPC";
         Chessman c, c2;
         int move = 2;
         int bs = 7, mv = 0;

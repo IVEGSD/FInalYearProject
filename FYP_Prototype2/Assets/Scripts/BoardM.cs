@@ -23,7 +23,7 @@ public class BoardM : MonoBehaviour {
     public static bool whetherMove = false;
 	private Quaternion orientation = Quaternion.Euler(0,180,0);
     public Button moveButton;
-    public static bool isWhiteTurn = true;
+    public static bool isWhiteTurn = true,isNPC = false;
     bool clickMap = true;
     int NPCPositiontX1 = 6, NPCPositiontY1 = 0;
 	private void Start(){
@@ -44,6 +44,14 @@ public class BoardM : MonoBehaviour {
 
         if (Input.GetMouseButtonDown (0)&& pos.x == 100) {
 			if (selectionX >= 0 && selectionY >= 0) {
+                if(selectionX == NPCPositiontX1&& selectionY == NPCPositiontY1)
+                {
+                    isNPC = true;
+                }
+                else
+                {
+                    isNPC = false;
+                }
 				if(selectedChessman ==null){
                     TurnEnd.click = false;
                     

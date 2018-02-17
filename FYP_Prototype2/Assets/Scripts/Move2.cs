@@ -6,7 +6,7 @@ public class Move2 : Chessman {
 
 	public override bool[,] PossibleMove(){
 		bool[,] r = new bool[8, 8];
-	
+        type = "PC";
 		Chessman c, c2;
 		int move = 1;
 		int bs = 7,mv = 0;

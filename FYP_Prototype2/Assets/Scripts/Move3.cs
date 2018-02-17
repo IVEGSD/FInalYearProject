@@ -9,7 +9,8 @@ public class Move3 : Chessman {
 		Chessman c, c2;
 		int move = 3;
 		int bs = 7,mv = 0;
-		for(int i = move;i>=0;i--){
+        type = "PC";
+        for (int i = move;i>=0;i--){
 			for (int j = move; j >= 0; j--) {
 
 				if(((i)*(i)+(j)*(j))<=(move*move)&&((i)*(i)+(j)*(j))!=8&&mv==0&&isWhite )
