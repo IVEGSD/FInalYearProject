@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 public class BoardM : MonoBehaviour {
 	public static BoardM Instance{ set; get;}
 	private bool[,] allowedMoves{ set; get;}
@@ -14,17 +14,18 @@ public class BoardM : MonoBehaviour {
     Button btn;
     private int selectionX = -1;
     private int selectionY = -1;
-	private int checkRound = 0;
+	private int checkRound = 1;
     public List<GameObject> chessmanPrefabs;
 	private List<GameObject> activeChessman = new List<GameObject>();
     // Use this for initialization
     private Material previousMat;
-
+    System.Random rnd = new System.Random();
     public static bool whetherMove = false;
 	private Quaternion orientation = Quaternion.Euler(0,180,0);
     public Button moveButton;
     public static bool isWhiteTurn = true;
     bool clickMap = true;
+    int NPCPositiontX1 = 6, NPCPositiontY1 = 0;
 	private void Start(){
 		Instance = this;
 		SpawnAllChessmans ();
@@ -59,8 +60,24 @@ public class BoardM : MonoBehaviour {
 		}
 
 
-            if (TurnEnd.round > checkRound) {
-			for (int x = 0; x < 8; x++) {
+        if (TurnEnd.round > checkRound) {
+            //Chessmans[6, 0].SetPosition(5, 5);
+            whetherMove = true;
+            SelectChessman(NPCPositiontX1, NPCPositiontY1);
+            
+            int rX = rnd.Next(7);
+            int rY = rnd.Next(7);
+            while(allowedMoves[rX, rY]==false)
+            {
+                rX = rnd.Next(7);
+                rY = rnd.Next(7);
+            }
+            NPCPositiontX1 = rX;
+            NPCPositiontY1 = rY;
+            MoveChessman(rX, rY);
+            whetherMove = false;
+
+            for (int x = 0; x < 8; x++) {
 				for (int y = 0; y < 8; y++) {
 					if (Chessmans [x, y] != null) {
 						Chessmans [x, y].isWhite = true;
@@ -176,10 +193,10 @@ public class BoardM : MonoBehaviour {
         SpawnChessman(3, 6, 0);
         SpawnChessman (1, 4,0);
 		SpawnChessman (2, 4,6);
-
-		//SpawnChessman (0, GetTileCenter(7.0));
-		//SpawnChessman (0, GetTileCenter(4.0));
-	}
+        
+        //SpawnChessman (0, GetTileCenter(7.0));
+        //SpawnChessman (0, GetTileCenter(4.0));
+    }
 	private Vector3 GetTileCenter(int x, int y){
 		Vector3 origin = Vector3.zero;
 		origin.x += (TILE_SIZE * x) + TILE_OFFSET;
