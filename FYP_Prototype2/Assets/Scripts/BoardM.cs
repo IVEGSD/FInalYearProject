@@ -75,7 +75,7 @@ public class BoardM : MonoBehaviour {
             
             int rX = rnd.Next(7);
             int rY = rnd.Next(7);
-            while(allowedMoves[rX, rY]==false)
+            while(allowedMoves[rX, rY]==false||Chessmans[rX,rY]!=null)
             {
                 rX = rnd.Next(7);
                 rY = rnd.Next(7);
