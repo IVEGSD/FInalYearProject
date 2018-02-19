@@ -71,7 +71,7 @@ public class BoardM : MonoBehaviour {
         if (TurnEnd.round > checkRound) {
             //Chessmans[6, 0].SetPosition(5, 5);
             whetherMove = true;
-            SelectChessman(NPCPositiontX1, NPCPositiontY1);
+            SelectChessman(NPCPositiontX1, NPCPositiontY1); 
             
             int rX = rnd.Next(7);
             int rY = rnd.Next(7);
